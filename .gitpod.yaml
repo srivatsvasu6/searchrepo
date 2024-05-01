@@ -1,19 +1,12 @@
 tasks:
-  - init: |
-      # Install dependencies
+  - name: Start Elasticsearch Cluster
+    command: |
       sudo apt-get update && sudo apt-get install -y wget openjdk-11-jdk
-      
-      # Download and install Elasticsearch
       wget https://artifacts.elastic.co/downloads/elasticsearch/elasticsearch-7.17.0-linux-x86_64.tar.gz
       tar -xzf elasticsearch-7.17.0-linux-x86_64.tar.gz
-      mv elasticsearch-7.17.0 /workspace/elasticsearch
-      
-      # Start Elasticsearch
-      /workspace/elasticsearch/bin/elasticsearch
-    name: Start Elasticsearch Cluster
-    command: sleep infinity
+      ./elasticsearch-7.17.0/bin/elasticsearch
+    openMode: port
     ports:
       - port: 9200
         onOpen: open-preview
       - port: 9300
-        onOpen: ignore
