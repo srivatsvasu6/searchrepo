@@ -1,6 +1,7 @@
 tasks:
   - name: Start Elasticsearch
-    command: |
-      sudo apt update && sudo apt install -y docker.io
-      docker run -d --name elasticsearch -p 9200:9200 -p 9300:9300 docker.elastic.co/elasticsearch/elasticsearch:7.17.0
+    command: ./start_elasticsearch.sh
     openMode: port
+    ports:
+      - port: 9200
+        onOpen: open-preview
