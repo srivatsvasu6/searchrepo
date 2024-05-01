@@ -1,2 +1,13 @@
-image:
-  file: .gitpod.Dockerfile
+tasks:
+  - name: Start Elasticsearch
+    init: |
+      # Install Docker
+      sudo apt update
+      sudo apt install -y docker.io
+
+      # Start Elasticsearch container
+      docker run -d --name elasticsearch -p 9200:9200 -p 9300:9300 docker.elastic.co/elasticsearch/elasticsearch:7.17.0
+    command: sleep infinity
+    ports:
+      - port: 9200
+        onOpen: open-preview
