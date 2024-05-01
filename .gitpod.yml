@@ -6,7 +6,7 @@ tasks:
       sudo apt install -y docker.io
 
       # Start Elasticsearch container
-      docker run -d --name elasticsearch -p 9200:9200 -p 9300:9300 docker.elastic.co/elasticsearch/elasticsearch:7.17.0
+      docker run -d --name elasticsearch -p 9200:9200 -p 9300:9300 docker.elastic.co/elasticsearch/elasticsearch:latest
     command: sleep infinity
     ports:
       - port: 9200
