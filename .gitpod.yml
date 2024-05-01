@@ -1,6 +1,13 @@
 tasks:
   - name: Start Elasticsearch
     command: |
-      sudo apt update && sudo apt install -y docker.io
-      docker run -d --name elasticsearch -p 9200:9200 -p 9300:9300 docker.elastic.co/elasticsearch/elasticsearch:latest
+      sudo apt update && sudo apt install -y docker-compose
+      echo "version: '3.8'
+services:
+  elasticsearch:
+    image: docker.elastic.co/elasticsearch/elasticsearch:7.17.0
+    ports:
+      - '9200:9200'
+      - '9300:9300'" > docker-compose.yml
+      docker-compose up -d
     openMode: port
